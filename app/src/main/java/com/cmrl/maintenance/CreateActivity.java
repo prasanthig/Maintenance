@@ -81,7 +81,7 @@ public class CreateActivity extends AppCompatActivity {
                 List<String> recipientList = new ArrayList<String>();
                 recipientList.clear();
                 try {
-                    Log.i("value1", "SMS List Response: "+ response.toString());
+                    //Log.i("value1", "SMS List Response: "+ response.toString());
                     JSONObject smsListObject = new JSONObject(response);
                     JSONArray dataArray = smsListObject.getJSONArray("data");
                     for(int i = 0 ; i < dataArray.length(); i++){
@@ -90,10 +90,10 @@ public class CreateActivity extends AppCompatActivity {
                     }
                     for(int i = 0 ; i < recipientList.size(); i++){
                         phno = recipientList.get(i);
-                        Log.i("value1","Phone number: "+phno);
+                        //Log.i("value1","Phone number: "+phno);
                         try {
                             smsManager.sendTextMessage(phno, null, smsMessage, null, null);
-                            Log.i("value", "Sending message");
+                            //Log.i("value", "Sending message");
                             Toast.makeText(getApplicationContext(), "SMS Sent Successfully!",
                                 Toast.LENGTH_LONG).show();
                         }catch(Exception e){
@@ -113,7 +113,7 @@ public class CreateActivity extends AppCompatActivity {
         Response.ErrorListener errorListener = new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.i("Volley", "Error");
+                //Log.i("Volley", "Error");
             }
         };
 

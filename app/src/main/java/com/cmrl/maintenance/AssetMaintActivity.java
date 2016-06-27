@@ -27,7 +27,7 @@ public class AssetMaintActivity extends AppCompatActivity {
     CreateLayout createLayout;
     String auth_key,equipment;
     Response.Listener<String> responseListener, responseListenerforAsset;
-    Boolean SCANNED = false;
+
     String assetMaintURL = "maintenance-next-dues/?assetCode=";
     String assetDecipherURL = "asset-code/decipher?assetCode=";
 
@@ -47,20 +47,18 @@ public class AssetMaintActivity extends AppCompatActivity {
 
         //Starting the ZXing Scanner
         IntentIntegrator scanIntegrator = new IntentIntegrator(this);
-        if(!SCANNED) {
-            scanIntegrator.initiateScan();
-            Log.i("value1", "starting scanner");
-        }
+        scanIntegrator.initiateScan();
+        //Log.i("value1", "starting scanner");
 
         responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONObject jsonResponse = new JSONObject(response);
-                    Log.i("value1", "Response: "+jsonResponse.toString());
+                    //Log.i("value1", "Response: "+jsonResponse.toString());
                     jsonResponse = jsonResponse.getJSONObject("data");
                     SaveData.FREQ_ID = jsonResponse.getString("freq_id");
-                    Log.i("value1","FREQ ID: "+ SaveData.FREQ_ID);
+                    //Log.i("value1","FREQ ID: "+ SaveData.FREQ_ID);
 
                     FetchData fetchData = new FetchData(AssetMaintActivity.this);
                     Map<String, String> param = fetchData.getApiParam(jsonResponse);
@@ -82,8 +80,8 @@ public class AssetMaintActivity extends AppCompatActivity {
                 try{
                     JSONObject jsonAssetResponse = new JSONObject(response);
                     equipment = jsonAssetResponse.getJSONObject("data").getString("equipment");
-                    Log.i("value1",jsonAssetResponse.toString());
-                    Log.i("value1","EQUIPMENT: " +equipment);
+                    //Log.i("value1",jsonAssetResponse.toString());
+                    //Log.i("value1","EQUIPMENT: " +equipment);
                     AssetMaintActivity.this.getSupportActionBar().setTitle(equipment);
                     SaveData.EQUIPMENT = equipment;
 
@@ -102,11 +100,9 @@ public class AssetMaintActivity extends AppCompatActivity {
     //Fetch Data from URL once the QRCode is scanned
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-        Log.i("value1", "Scanning done");
+        //Log.i("value1", "Scanning done");
         if (scanningResult != null) {
             // Volley Request
-            SCANNED = true;
-            Log.i("value1",String.valueOf(SCANNED));
             SaveData.ASSET_CODE = scanningResult.getContents();
 
             assetMaintURL += SaveData.ASSET_CODE + "&token=" + auth_key;
@@ -114,11 +110,11 @@ public class AssetMaintActivity extends AppCompatActivity {
 
             AssetMaintRequest decipherRequest = new AssetMaintRequest(assetDecipherURL, responseListenerforAsset);
             RequestQueue queue = Volley.newRequestQueue(AssetMaintActivity.this);
-            Log.i("value1","AssetDecipher req");
+            //Log.i("value1","AssetDecipher req");
             queue.add(decipherRequest);
 
             AssetMaintRequest maintRequest = new AssetMaintRequest(assetMaintURL, responseListener);
-            Log.i("value1","AssetMAint req");
+            //Log.i("value1","AssetMAint req");
             queue.add(maintRequest);
 
         }

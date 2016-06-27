@@ -37,7 +37,7 @@ public class CreateLayout{
 
     //Constructor to initialize values
     public CreateLayout(Context context, LinearLayout linearLayout){
-        Log.i("value1", "CreateLayout: context: " + context);
+        //Log.i("value1", "CreateLayout: context: " + context);
 
         this.context = context;
         this.linearLayout = linearLayout;
@@ -63,7 +63,7 @@ public class CreateLayout{
 
     //Function to create CheckedTextView (Check box)
     void createCheckedTextView(String checkName){
-        Log.i("value1", "createCheckedTextView: 12");
+        //("value1", "createCheckedTextView: 12");
         SaveData.checkedList.add(checkedTextView);
         checkedTextView.setChecked(false);
         checkedTextView.setCheckMarkDrawable(android.R.drawable.checkbox_off_background);
@@ -97,12 +97,12 @@ public class CreateLayout{
         });
         checkedTextView.setLayoutParams(checkBoxParams);
         linearLayout.addView(checkedTextView);
-        Log.i("checked",checkedTextView.toString());
+        //Log.i("checked",checkedTextView.toString());
     }
 
     //Function to create EditText (Comment box)
     void createEditText() {
-        Log.i("value1", "createEditText: 1");
+        //Log.i("value1", "createEditText: 1");
         SaveData.editTextList.add(editText);
         editText.setLayoutParams(editParams);
         editText.setTextColor(Color.BLACK);
@@ -128,7 +128,7 @@ public class CreateLayout{
                 alertText[1] = "";
                 alertText = createJSONString(createdViews);
                 //Log.i("value", "URLParams: "+ URLParams);
-                Log.i("value", "alertText: "+ Arrays.toString(alertText));
+                //Log.i("value", "alertText: "+ Arrays.toString(alertText));
                 show_alert();
 
             }
@@ -183,9 +183,9 @@ public class CreateLayout{
                 else
                     parent.put(key,0);
             }
-            Log.i("value1","Context: "+context.toString()+" LinearLayout: "+linearLayout.toString()
-                    +" CreatedViews: "+ Arrays.deepToString(createdViews));
-            Log.i("value1","Parent: "+parent);
+            /*Log.i("value1","Context: "+context.toString()+" LinearLayout: "+linearLayout.toString()
+                    +" CreatedViews: "+ Arrays.deepToString(createdViews));*/
+            //Log.i("value1","Parent: "+parent);
 
             //Iterate through the created views which is a 2D array
             for(int len=0; len<createdViews.length; len++) {
@@ -216,7 +216,7 @@ public class CreateLayout{
             if(alertText[1].equals(""))
                 alertText[1]= "(None)";
 
-            Log.i("value1","Parent: "+parent);
+            //Log.i("value1","Parent: "+parent);
 
         } catch (JSONException e) {
             e.printStackTrace();
