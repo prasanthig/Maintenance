@@ -40,6 +40,7 @@ public class UserActivity extends AppCompatActivity {
         final TextView tvLatitude = (TextView) findViewById(R.id.tvLatitude);
         final TextView tvLongitude = (TextView) findViewById(R.id.tvLongitude);
         final Button btLogin = (Button) findViewById(R.id.btLogin);
+        Button btLocation = (Button) findViewById(R.id.btLocation);
 
         // Save values from predecessor
         Intent intent = getIntent();
@@ -103,6 +104,14 @@ public class UserActivity extends AppCompatActivity {
                 RequestQueue queue = Volley.newRequestQueue(UserActivity.this);
                 queue.add(loginRequest);
                 //Log.i("values", "username: "+username+"/"+password+" location: "+latitude+"/"+longitude );
+            }
+        });
+
+        btLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent locIntent = new Intent(UserActivity.this,ViewLocationActivity.class);
+                startActivity(locIntent);
             }
         });
     }

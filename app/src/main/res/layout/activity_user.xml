@@ -48,6 +48,15 @@
         android:layout_below="@+id/btLogin"
         android:layout_centerHorizontal="true" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btLocation"
+        android:text="View Map"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/tvAssetcode"
+        android:layout_centerHorizontal="true"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
