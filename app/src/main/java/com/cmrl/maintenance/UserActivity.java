@@ -39,7 +39,7 @@ public class UserActivity extends AppCompatActivity {
 
         final EditText etUsername = (EditText) findViewById(R.id.etUsername);
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
-        final TextView tvAssetcode = (TextView) findViewById(R.id.tvAssetcode);
+        final Button tvAssetcode = (Button) findViewById(R.id.tvAssetcode);
         final TextView tvLatitude = (TextView) findViewById(R.id.tvLatitude);
         final TextView tvLongitude = (TextView) findViewById(R.id.tvLongitude);
         final Button btLogin = (Button) findViewById(R.id.btLogin);
