@@ -9,10 +9,12 @@ package com.cmrl.maintenance;
  */
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -51,6 +53,7 @@ public class UserActivity extends AppCompatActivity {
         tvLongitude.setText("Longitude: " + longitude);
 
         // User can go Asset Decipher instead
+        assert tvAssetcode != null;
         tvAssetcode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,9 +65,13 @@ public class UserActivity extends AppCompatActivity {
         });
 
         // Start Login. JSON Request and Response
+        assert btLogin != null;
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Hide keyboard
+                InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),InputMethodManager.HIDE_NOT_ALWAYS);
                 // Store Username/Password
                 final String username = etUsername.getText().toString();
                 final String password = etPassword.getText().toString();
@@ -121,6 +128,7 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
+        assert btLocation != null;
         btLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

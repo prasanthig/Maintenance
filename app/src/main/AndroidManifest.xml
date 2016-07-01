@@ -26,7 +26,8 @@
         <activity android:name=".AssetDetailActivity" />
         <activity android:name=".AssetMaintActivity" />
         <activity android:name=".CreateActivity" />
-        <activity android:name=".UserActivity" />
+        <activity android:name=".UserActivity"
+            android:label="Login"/>
         <activity android:name=".UserDataActivity" />
         <activity android:name=".ViewLocationActivity"
             android:label="View Location"/>

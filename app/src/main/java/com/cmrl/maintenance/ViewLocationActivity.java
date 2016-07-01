@@ -50,6 +50,8 @@ public class ViewLocationActivity extends AppCompatActivity {
         buttonParams.gravity = Gravity.CENTER_HORIZONTAL;
         btView = new Button(this);
         btView.setText("View");
+        btView.setTextColor(getResources().getColor(R.color.white));
+        btView.setBackgroundResource(R.drawable.rounded_button);
 
         btView.setOnClickListener(new View.OnClickListener() {
             @Override
