@@ -68,7 +68,7 @@ public class LocationActivity extends AppCompatActivity implements GoogleApiClie
         if (mLocation != null) {
             latitude = String.valueOf(mLocation.getLatitude());
             longitude = String.valueOf(mLocation.getLongitude());
-            //Log.i("value","Latitude: " + latitude + " Longitude: " + longitude);
+            Log.i("value","Latitude: " + latitude + " Longitude: " + longitude);
             // Pass location coordinate for user login
             Intent intent = new Intent(LocationActivity.this, UserActivity.class);
             intent.putExtra("latitude", latitude);

@@ -37,6 +37,7 @@ public class AssetMaintActivity extends AppCompatActivity {
 
         SaveData.checkedList.clear();
         SaveData.editTextList.clear();
+        SaveData.FREQ_ID = "";
 
         Intent intent = getIntent();
         auth_key = intent.getStringExtra("auth_key");
@@ -56,12 +57,16 @@ public class AssetMaintActivity extends AppCompatActivity {
                 try {
                     JSONObject jsonResponse = new JSONObject(response);
                     //Log.i("value1", "Response: "+jsonResponse.toString());
-                    jsonResponse = jsonResponse.getJSONObject("data");
-                    SaveData.FREQ_ID = jsonResponse.getString("freq_id");
+                    JSONObject dataResponse = jsonResponse.getJSONObject("data");
+                    //Log.i("value", "Response: " + dataResponse.toString());
+                    SaveData.FREQ_ID = dataResponse.getString("freq_id");
                     //Log.i("value1","FREQ ID: "+ SaveData.FREQ_ID);
 
+                    //if(dataResponse.toString().equals("null"))
+
+
                     FetchData fetchData = new FetchData(AssetMaintActivity.this);
-                    Map<String, String> param = fetchData.getApiParam(jsonResponse);
+                    Map<String, String> param = fetchData.getApiParam(dataResponse);
                     //Log.i("value1", "Response: " + param);
 
                     String[][] createdViews = fetchData.createViews(param, linearLayout);
@@ -71,6 +76,8 @@ public class AssetMaintActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                if(SaveData.FREQ_ID.equals(""))
+                Toast.makeText(AssetMaintActivity.this, "No maintenance Due", Toast.LENGTH_LONG).show();
             }
         };
         responseListenerforAsset = new Response.Listener<String>() {
@@ -82,6 +89,7 @@ public class AssetMaintActivity extends AppCompatActivity {
                     equipment = jsonAssetResponse.getJSONObject("data").getString("equipment");
                     //Log.i("value1",jsonAssetResponse.toString());
                     //Log.i("value1","EQUIPMENT: " +equipment);
+                    if(!(AssetMaintActivity.this.getSupportActionBar() == null))
                     AssetMaintActivity.this.getSupportActionBar().setTitle(equipment);
                     SaveData.EQUIPMENT = equipment;
 

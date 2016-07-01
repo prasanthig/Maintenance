@@ -1,5 +1,6 @@
 package com.cmrl.maintenance;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -160,6 +161,7 @@ public class CreateLayout{
                         Intent createIntent = new Intent(context, CreateActivity.class);
                         createIntent.putExtra("parent", parent.toString());
                         context.startActivity(createIntent);
+                        ((Activity) context).finish();
                     }
                 });
         AlertDialog alert = builder.create();

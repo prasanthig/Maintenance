@@ -61,7 +61,7 @@ public class CreateActivity extends AppCompatActivity {
                         String username = jsonResponse.getString("username");
                         String organisation = jsonResponse.getString("organisation");
 
-                        smsMessage = message +" " + username + " " + organisation;
+                        smsMessage = "Maintenance done by " +" " + username + " " + "of " + organisation + " for equipment: " + SaveData.EQUIPMENT;
                         tvMessage.setText(message);
                         tvEngineer.setText("Engineer: "+username);
                         tvContractor.setText("Contractor: "+organisation);
@@ -78,7 +78,7 @@ public class CreateActivity extends AppCompatActivity {
                 int j = 0;
                 String phno = "";
                 SmsManager smsManager = SmsManager.getDefault();
-                List<String> recipientList = new ArrayList<String>();
+                List<String> recipientList = new ArrayList<>();
                 recipientList.clear();
                 try {
                     //Log.i("value1", "SMS List Response: "+ response.toString());
@@ -90,16 +90,15 @@ public class CreateActivity extends AppCompatActivity {
                     }
                     for(int i = 0 ; i < recipientList.size(); i++){
                         phno = recipientList.get(i);
-                        //Log.i("value1","Phone number: "+phno);
+                        Log.i("value1","Phone number: "+phno);
                         try {
-                            smsManager.sendTextMessage(phno, null, smsMessage, null, null);
+                            //smsManager.sendTextMessage(phno, null, smsMessage, null, null);
                             //Log.i("value", "Sending message");
                             Toast.makeText(getApplicationContext(), "SMS Sent Successfully!",
-                                Toast.LENGTH_LONG).show();
+                                Toast.LENGTH_SHORT).show();
                         }catch(Exception e){
                             Toast.makeText(getApplicationContext(), "SMS not sent!",
-                                    Toast.LENGTH_LONG).show();
-                            //sendSms(phno,smsMessage);
+                                    Toast.LENGTH_SHORT).show();
                         }
                     }
                 } catch (JSONException e) {
