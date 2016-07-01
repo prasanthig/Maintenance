@@ -90,9 +90,9 @@ public class CreateActivity extends AppCompatActivity {
                     }
                     for(int i = 0 ; i < recipientList.size(); i++){
                         phno = recipientList.get(i);
-                        Log.i("value1","Phone number: "+phno);
+                        //Log.i("value1","Phone number: "+phno);
                         try {
-                            //smsManager.sendTextMessage(phno, null, smsMessage, null, null);
+                            smsManager.sendTextMessage(phno, null, smsMessage, null, null);
                             //Log.i("value", "Sending message");
                             Toast.makeText(getApplicationContext(), "SMS Sent Successfully!",
                                 Toast.LENGTH_SHORT).show();
