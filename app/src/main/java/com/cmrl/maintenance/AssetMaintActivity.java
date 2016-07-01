@@ -60,7 +60,7 @@ public class AssetMaintActivity extends AppCompatActivity {
                     JSONObject dataResponse = jsonResponse.getJSONObject("data");
                     //Log.i("value", "Response: " + dataResponse.toString());
                     SaveData.FREQ_ID = dataResponse.getString("freq_id");
-                    Log.i("value1","FREQ ID: "+ SaveData.FREQ_ID);
+                    //Log.i("value1","FREQ ID: "+ SaveData.FREQ_ID);
 
                     //if(dataResponse.toString().equals("null"))
 

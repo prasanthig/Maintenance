@@ -218,7 +218,7 @@ public class CreateLayout{
             if(alertText[1].equals(""))
                 alertText[1]= "(None)";
 
-            Log.i("value1","Parent: "+parent);
+            //Log.i("value1","Parent: "+parent);
 
         } catch (JSONException e) {
             e.printStackTrace();
