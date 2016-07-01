@@ -50,6 +50,7 @@ public class AssetDecipherActivity extends AppCompatActivity {
                 userIntent.putExtra("latitude", latitude); // Saved values returned
                 userIntent.putExtra("longitude", longitude);
                 AssetDecipherActivity.this.startActivity(userIntent);
+                finish();
             }
         });
 

@@ -13,7 +13,7 @@ public class AssetMaintRequest extends StringRequest {
 
     public AssetMaintRequest (String url, Response.Listener<String> listener){
         super(Request.Method.GET, LOGIN_REQUEST_URL + url, listener, null);
-        Log.i("value1","Reached AssetMaintRequest");
+        //Log.i("value1","Reached AssetMaintRequest");
     }
 
 }
