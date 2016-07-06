@@ -18,8 +18,15 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -92,8 +99,28 @@ public class ViewLocationActivity extends AppCompatActivity {
                 }
             }
         };
+
+        Response.ErrorListener errorListener = new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if( error instanceof TimeoutError) {
+                    Log.i("Volley","Error: TimeoutError  " + error.toString());
+                } else if( error instanceof ServerError) {
+                    Log.i("Volley","Error: Server Error " + error.getMessage());
+                } else if( error instanceof AuthFailureError) {
+                    Log.i("Volley","Error: Auth Failure Error " + error.getMessage());
+                } else if( error instanceof ParseError) {
+                    Log.i("Volley","Error: Parse Error " + error.getMessage());
+                } else if( error instanceof NoConnectionError) {
+                    Log.i("Volley","Error: No Connection Error " + error.getMessage());
+                } else if( error instanceof NetworkError) {
+                    Log.i("Volley","Error: NetworkError " + error.getMessage());
+                }
+
+            }
+        };
         // Volley Request
-        AssetMaintRequest contractorRequest = new AssetMaintRequest(getContractorURL, responseListener);
+        AssetMaintRequest contractorRequest = new AssetMaintRequest(getContractorURL, responseListener, errorListener);
         RequestQueue queue = Volley.newRequestQueue(ViewLocationActivity.this);
         queue.add(contractorRequest);
         //Log.i("values", "username: "+username+"/"+password+" location: "+latitude+"/"+longitude );
