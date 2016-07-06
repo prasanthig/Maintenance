@@ -38,6 +38,7 @@
         android:layout_alignParentEnd="true"
         android:hint="Password" />
 
+
     <Button
         android:layout_width="300dp"
         android:layout_height="wrap_content"
@@ -80,6 +81,7 @@
         android:textStyle="bold"
         android:textColor="@color/black"
         android:layout_centerHorizontal="true" />
+
 
     <TextView
         android:layout_width="wrap_content"

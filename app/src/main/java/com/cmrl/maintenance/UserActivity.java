@@ -45,6 +45,12 @@ public class UserActivity extends AppCompatActivity {
         final Button btLogin = (Button) findViewById(R.id.btLogin);
         Button btLocation = (Button) findViewById(R.id.btLocation);
 
+        // Remove following block from comments for CMRL Lite
+        /*assert tvAssetcode != null;
+        tvAssetcode.setVisibility(View.GONE);
+        assert btLocation != null;
+        btLocation.setVisibility(View.GONE);*/
+
         // Save values from predecessor
         Intent intent = getIntent();
         latitude = intent.getStringExtra("latitude");
